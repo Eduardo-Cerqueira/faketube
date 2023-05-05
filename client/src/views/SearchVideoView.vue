@@ -220,7 +220,7 @@ watch(()=> route.params.userResearch,async (newUserResearch)=> {
                         </div>
                         <div class="views-date flex gap-2 mt-3">
                             <img class="object-cover rounded-full w-8 h-8" :src="publisherName[video.video.publisher_id]?.profile_photo" alt="Image de la chaine">
-                            <p class="text-gray-500 text-sm flex items-center">{{ publisherName[video.video.publisher_id]?.pseudo ?? 'Nom inconnu' }} chaine</p>
+                            <p class="text-gray-500 text-sm flex items-center">{{ publisherName[video.video.publisher_id]?.pseudo ?? 'Nom inconnu' }} </p>
                         </div>
                     </div>
                 </router-link>
