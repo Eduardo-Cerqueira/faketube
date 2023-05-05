@@ -1,6 +1,6 @@
 <template>
   <!-- channel info section -->
-  <div class="w-9/12 m-auto flex justify-center flex-col items-center mt-2">
+  <div class="w-9/12 m-auto flex justify-center flex-col items-center mt-2 text-white">
     <!-- profile picture -->
     <div>
       <!-- <img src="../assets/ppCarre.png" alt="" class= "rounded-full w-1/4"> -->
