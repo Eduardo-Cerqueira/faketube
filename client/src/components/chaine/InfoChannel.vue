@@ -1,6 +1,6 @@
 <template>
   <!-- channel info section -->
-  <div class="w-9/12 m-auto flex justify-center flex-col items-center mt-2">
+  <div class="w-9/12 m-auto flex justify-center flex-col items-center mt-2 text-white">
     <!-- profile picture -->
     <div>
       <!-- <img src="../assets/ppCarre.png" alt="" class= "rounded-full w-1/4"> -->
@@ -21,13 +21,13 @@
         </div>
         <button class="text-center">S'abonner</button>
         <button class="text-center">modifier profil</button>
-
+        <!--
         <ul class="flex justify-around">
           <li><router-link to="/description">></router-link></li>
           <li><router-link to="/description">></router-link></li>
           <li><router-link to="/description">></router-link></li>
           <li><router-link to="/description">></router-link></li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </div>

@@ -187,14 +187,6 @@ export default {
       Data.append('miniature_path', this.thumbnail.name)
 
       await axios
-        .post('http://localhost:8080/upload/data', Data)
-        .then(function (response) {
-          console.log(response)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-      await axios
         .post('http://localhost:8080/upload/thumbnail', thumbnailData)
         .then((res) => {
           console.log(res)
@@ -209,6 +201,14 @@ export default {
         })
         .catch((err) => {
           console.log(err)
+        })
+        await axios
+        .post('http://localhost:8080/upload/data', Data)
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
         })
       this.$router.push({ path: '/' })
     }
