@@ -3,7 +3,7 @@
     <router-link :to="`/watch?id=${video.id}`">
       <img
         alt="thumbnail"
-        :src="`http://localhost:8080/thumbnail/${video.id}`"
+        :src="`${path}/thumbnail/${video.id}`"
         class="video-list-thumbnail object-cover rounded-sm"
       />
       <div class="video-list-item-infos">

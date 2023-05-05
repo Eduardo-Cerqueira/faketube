@@ -94,7 +94,7 @@ const registerFunction = async (key, value) => {
     error,
     data: dbmessage
   } = await useFetch(
-    `http://localhost:8080/register/${pseudo.value}/${email.value}/${password.value}`
+    `${import.meta.env.VITE_BACKEND_ADRESS}/register/${pseudo.value}/${email.value}/${password.value}`
   )
   message.message = JSON.parse(dbmessage.value)['message']
 

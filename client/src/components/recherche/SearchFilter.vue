@@ -88,7 +88,7 @@ const getFilteredVideos = async (filter) => {
     isFetching,
     error,
     data: video
-  } = await useFetch('http://localhost:8080/getUserById/' + filter)
+  } = await useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/getUserById/${filter}`)
   const formattedVideos = computed(() => {
     return JSON.parse(video.value)
   })

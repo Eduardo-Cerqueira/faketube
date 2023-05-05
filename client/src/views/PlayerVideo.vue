@@ -9,8 +9,8 @@ export default {
   data() {
     return {
       option: {
-        url: `http://localhost:8080/video/${this.$route.params.id}`,
-        poster: `http://localhost:8080/thumbnail/${this.$route.params.id}`,
+        url: `${import.meta.env.VITE_BACKEND_ADRESS}/video/${this.$route.params.id}`,
+        poster: `${import.meta.env.VITE_BACKEND_ADRESS}/thumbnail/${this.$route.params.id}`,
         fullscreen: true,
         fullscreenWeb: true,
         muted: false

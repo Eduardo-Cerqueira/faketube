@@ -103,7 +103,7 @@ import { useFetch } from '@vueuse/core'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 // Requête sur le serveur
-const { isFetching, error, data: video } = useFetch('http://localhost:8080/')
+const { isFetching, error, data: video } = useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/`)
 const formattedVideo = computed(() => {
   return JSON.parse(video.value)
 })

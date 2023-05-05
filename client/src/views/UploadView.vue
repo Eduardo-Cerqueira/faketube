@@ -156,7 +156,7 @@ export default {
       formData.append('file', this.File[0])
       const test = this
       await axios
-        .post('http://localhost:8080/thumbnail', formData)
+        .post(`${import.meta.env.VITE_BACKEND_ADRESS}/thumbnail`, formData)
         .then(function (response) {
           console.log(response)
           const file = new File([response.data.image], response.data.name, {
@@ -187,7 +187,7 @@ export default {
       Data.append('miniature_path', this.thumbnail.name)
 
       await axios
-        .post('http://localhost:8080/upload/thumbnail', thumbnailData)
+        .post(`${import.meta.env.VITE_BACKEND_ADRESS}/upload/thumbnail`, thumbnailData)
         .then((res) => {
           console.log(res)
         })
@@ -195,7 +195,7 @@ export default {
           console.log(err)
         })
       await axios
-        .post('http://localhost:8080/upload/video', formData)
+        .post(`${import.meta.env.VITE_BACKEND_ADRESS}/upload/video`, formData)
         .then((res) => {
           console.log(res)
         })
@@ -203,7 +203,7 @@ export default {
           console.log(err)
         })
         await axios
-        .post('http://localhost:8080/upload/data', Data)
+        .post(`${import.meta.env.VITE_BACKEND_ADRESS}/upload/data`, Data)
         .then(function (response) {
           console.log(response)
         })

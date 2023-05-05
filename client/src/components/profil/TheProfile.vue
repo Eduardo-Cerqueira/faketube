@@ -129,7 +129,7 @@ onMounted(async () => {
     isFetching,
     error,
     data: use
-  } = await useFetch(`http://localhost:8080/getUserById/${localStorage.getItem('id')}`)
+  } = await useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/getUserById/${localStorage.getItem('id')}`)
   user.pseudo = JSON.parse(use.value).message[0]['pseudo']
   user.email = JSON.parse(use.value).message[0]['email']
   user.date = JSON.parse(use.value).message[0]['created_at']
@@ -143,7 +143,7 @@ async function editUsername() {
       error,
       data: newPseudo
     } = await useFetch(
-      `http://localhost:8080/updatePseudo/${newUsername}/${localStorage.getItem('id')}`
+      `${import.meta.env.VITE_BACKEND_ADRESS}/updatePseudo/${newUsername}/${localStorage.getItem('id')}`
     )
     user.pseudo = JSON.parse(newPseudo.value)['newPseudo']
   }
@@ -161,7 +161,7 @@ async function editEmail() {
       error,
       data: newPseudo
     } = await useFetch(
-      `http://localhost:8080/updateEmail/${newEmail}/${localStorage.getItem('id')}`
+      `${import.meta.env.VITE_BACKEND_ADRESS}/updateEmail/${newEmail}/${localStorage.getItem('id')}`
     )
     user.email = JSON.parse(newPseudo.value)['newEmail']
   }

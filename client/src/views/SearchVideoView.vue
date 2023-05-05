@@ -74,7 +74,7 @@ function checkViewsOrSubscribers(number) {
 }
 
 async function getInfoUser(userId) {
-  const { isFetching, error, data } = await useFetch('http://localhost:8080/getUserById/' + userId)
+  const { isFetching, error, data } = await useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/getUserById/${userId}`)
   return JSON.parse(data.value)
 }
 

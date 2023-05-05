@@ -28,10 +28,11 @@ const formattedVideoDate = computed(() => {
     return `${diff} secondes`
   }
 })
+const path = import.meta.env.VITE_BACKEND_ADRESS
 const publisherInfos = reactive({ pseudo: '', id: '', profilePicture: '' })
 onMounted(async () => {
   const { isFetching, error, data } = await useFetch(
-    `http://localhost:8080/getUserById/${props.video.publisher_id}`
+    `${path}/getUserById/${props.video.publisher_id}`
   )
   const formattedData = JSON.parse(data.value).message[0]
   publisherInfos.pseudo = formattedData.pseudo
@@ -43,7 +44,7 @@ onMounted(async () => {
   <div class="aspect-video text-white">
     <img
       class="w-max aspect-video object-cover rounded-2xl"
-      :src="`http://localhost:8080/thumbnail/${video.id}`"
+      :src="`${path}/thumbnail/${video.id}`"
       :alt="video.title"
     />
     <div class="flex flex-row gap-4 mt-4">

@@ -36,7 +36,7 @@ const formattedVideoDate = computed(() => {
     <router-link :to="{name: 'watch', params: {id: video.id}}">
     <img
       class="w-full aspect-video object-cover rounded-2xl"
-      :src="`http://localhost:8080/thumbnail/${video.id}`"
+      :src="`${path}/thumbnail/${video.id}`"
       :alt="video.title"
     />
     <div class="1/4 gap-4 mt-2 shadow-sm ">

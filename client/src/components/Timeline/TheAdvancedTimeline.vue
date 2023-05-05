@@ -7,7 +7,7 @@ const {
   isFetching,
   error,
   data: videos
-} = useFetch('http://localhost:8080/getAdvancedTimelineVideos?userId=1')
+} = useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/getAdvancedTimelineVideos?userId=1`)
 const formattedVideo = computed(() => {
   return JSON.parse(videos.value)
 })

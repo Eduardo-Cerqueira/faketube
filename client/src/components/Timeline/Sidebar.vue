@@ -17,7 +17,7 @@ onMounted(async () => {
   if (localStorage.getItem('id')) {
     userId.value = localStorage.getItem('id')
     const { data: userInfosFetch } = await useFetch(
-      `http://localhost:8080/getUserById/${userId.value}`
+      `${import.meta.env.VITE_BACKEND_ADRESS}/getUserById/${userId.value}`
     )
     const fetchResult = JSON.parse(userInfosFetch.value).message[0]
     connectedUser.pseudo = fetchResult.pseudo
@@ -28,13 +28,13 @@ const subscriptions = ref([])
 onMounted(async () => {
   if (userId.value !== '') {
     const { isFetching, error, data } = await useFetch(
-      `http://localhost:8080/getUserSubscriptions/${userId.value}`
+      `${import.meta.env.VITE_BACKEND_ADRESS}/getUserSubscriptions/${userId.value}`
     )
     const formattedData = JSON.parse(data.value).message
 
     const promises = formattedData.map(async (id) => {
       const { data: youtuber } = await useFetch(
-        `http://localhost:8080/getUserById/${id.publisher_id}`
+        `${import.meta.env.VITE_BACKEND_ADRESS}/getUserById/${id.publisher_id}`
       )
       return JSON.parse(youtuber.value).message[0]
     })

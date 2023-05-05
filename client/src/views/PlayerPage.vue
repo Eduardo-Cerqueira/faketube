@@ -6,9 +6,9 @@
           <video
             ref="video"
             class="video-player-video"
-            :src="`http://localhost:8080/flux/${id}`"
+            :src='`${path}/flux/${id}`'
             @play="handlePlay"
-            :poster="`http://localhost:8080/thumbnail/${id}`"
+            :poster="`${path}/thumbnail/${id}`"
             @pause="handlePause"
           ></video>
         </div>
@@ -110,6 +110,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      path: import.meta.env.VITE_BACKEND_ADRESS,
       volume: 0.5,
       isMuted: false,
       isPlaying: false,
@@ -210,7 +211,7 @@ export default {
     },
     async getVideo(id) {
       try {
-        const response = await axios.get(`http://localhost:8080/video/${id}`)
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_ADRESS}/video/${id}`)
         console.log(response)
         this.video = response.data.video[0]
         console.log(this.video)
@@ -220,7 +221,7 @@ export default {
     },
     async getVideos() {
       try {
-        const response = await axios.get(`http://localhost:8080/videos`)
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_ADRESS}/videos`)
         /* console.log(response); */
         this.videos = response.data.videos
       } catch (error) {
@@ -235,7 +236,7 @@ export default {
         this.likeNumber++
         this.ifLiked = true
       }
-      axios.patch(`http://localhost:8080/video/${id}`, {
+      axios.patch(`${import.meta.env.VITE_BACKEND_ADRESS}/video/${id}`, {
         like_number: this.likeNumber
       })
     },
@@ -247,7 +248,7 @@ export default {
         this.dislikeNumber++
         this.ifDisliked = true
       }
-      axios.patch(`http://localhost:8080/video/${id}`, {
+      axios.patch(`${import.meta.env.VITE_BACKEND_ADRESS}/video/${id}`, {
         dislike_number: this.dislikeNumber
       })
     },
@@ -257,7 +258,7 @@ export default {
         views: this.video.views + 1
       }
       console.log(this.video)
-      axios.patch(`http://localhost:8080/video/${id}`, {
+      axios.patch(`${import.meta.env.VITE_BACKEND_ADRESS}/video/${id}`, {
         views: this.video.views
       })
     },

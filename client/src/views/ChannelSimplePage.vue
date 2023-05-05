@@ -41,7 +41,7 @@ onMounted(async () => {
     isFetching,
     error,
     data: videos
-  } = await useFetch(`http://localhost:8080/getVideoByPublisherId/${userId}`)
+  } = await useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/getVideoByPublisherId/${userId}`)
   userVideos.value = JSON.parse(videos.value).message
 })
 </script>

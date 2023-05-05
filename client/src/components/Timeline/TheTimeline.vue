@@ -28,7 +28,7 @@ import { useFetch } from '@vueuse/core'
 import VideoCard from './VideoCard.vue'
 import { computed } from 'vue'
 import VideoCardSkeleton from './VideoCardSkeleton.vue'
-const { isFetching, error, data: videos } = useFetch('http://localhost:8080/getTimelineVideos')
+const { isFetching, error, data: videos } = useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/getTimelineVideos`)
 const formattedVideo = computed(() => {
   return JSON.parse(videos.value)
 })

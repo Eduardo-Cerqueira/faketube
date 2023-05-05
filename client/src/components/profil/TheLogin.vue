@@ -66,7 +66,7 @@ const LOGINFunction = async () => {
     isFetching,
     error,
     data: dbmessage
-  } = await useFetch(`http://localhost:8080/login/${email.value}/${password.value}`)
+  } = await useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/login/${email.value}/${password.value}`)
   message.message = JSON.parse(dbmessage.value)['message']
 
   // Naviguer vers la page home

@@ -2,7 +2,7 @@
 import { reactive, ref, onMounted, computed } from 'vue'
 import { useFetch } from '@vueuse/core'
 import * as dayjs from 'dayjs'
-const { isFetching, error, data: video } = useFetch('http://localhost:8080/searchPage')
+const { isFetching, error, data: video } = useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/searchPage`)
 
 const formattedVideo = computed(() => {
   return JSON.parse(video.value)
@@ -15,7 +15,7 @@ async function getInfoUser(userId) {
     isFetching,
     error,
     data: user
-  } = await useFetch('http://localhost:8080/getUserById/' + userId)
+  } = await useFetch(`${import.meta.env.VITE_BACKEND_ADRESS}/getUserById/${userId}`)
 
   return JSON.parse(user.value)
 }
