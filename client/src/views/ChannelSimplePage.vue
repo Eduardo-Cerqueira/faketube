@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div  class="w-full overflow-x-hidden">
+    <div class="w-full overflow-x-hidden">
       <div><img src="../assets/ppCarre.jpg" alt="" class="w-full h-32" /></div>
       <InfoChannel
         videoChannelName="toto"
@@ -22,8 +22,7 @@
     </div>
   </main>
 </template>
-
-<script>
+<script setup>
 import { useFetch } from '@vueuse/core'
 import { computed, onMounted, ref, reactive } from 'vue'
 // import SelectVideoChannel from "../components/chaine/SelectVideoChannel.vue";
@@ -38,7 +37,6 @@ const userVideos = ref('')
 
 onMounted(async () => {
   const userId = route.params.id
-
   const {
     isFetching,
     error,
