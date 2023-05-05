@@ -1,6 +1,6 @@
 <template>
-    <div class="profile dark-theme">
-        <div class="flex flex-col items-center w-full mb-0">
+    <div class="profile dark-theme text-white">
+        <div class="flex flex-col items-center w-full mb-0 mt-5">
             <label for="profile-image-input">
                 <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg" class="w-[120px] h-[120px] object-cover mb-5 rounded-full border-4 border-white shadow-md cursor-pointer" alt="Profile Image" />
             </label>
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="text-white">
         <h2 class="text-3xl font-semibold mb-4">Changer le mot de passe</h2>
         <form class="flex flex-col space-y-4">
             <div class="flex flex-col">

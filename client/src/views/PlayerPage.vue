@@ -1,5 +1,5 @@
 <template>
-  <div class="player-page-content">
+  <div class="player-page-content text-white">
     <div class="video-player-container">
       <div class="video-player">
         <div class="video-container">
@@ -65,7 +65,7 @@
         </div>
       </div>
 
-      <div class="description-case">
+      <div class="description-case text-white">
         <div class="video-informations">
           <span class="video-views">{{ video.views }} views </span>
           <span class="video-date">2 hours ago</span>
