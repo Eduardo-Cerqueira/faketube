@@ -118,14 +118,6 @@ function suggestAction(text) {
   router.push(`/searchVideo/${text}`)
 }
 
-function loupeAction(){
-  if(msg.value){
-    clear.value = false;
-    router.push({name: "searchVideo", params:{userResearch : toLowercaseMsgValue.value}})
-    
-  }
-}
-
 const contents = ref([
 
   { text: 'allume cigare' },
