@@ -202,33 +202,29 @@ watch(()=> route.params.userResearch,async (newUserResearch)=> {
     <div class="main-container flex flex-col w-full">
         <SearchFilter></SearchFilter>
         <div class="bg-zinc-800 max-w-full ml-20 mt-10 flex flex-col gap-y-4">
-
+            <div v-if="videoScores.length === 0">
+                <div class="text-center">
+                    <p>Aucune vidéo ne correspond à cette recherche.</p>
+                </div>
+            </div>
             <div v-for="(video, index) in videoScores" :key="index">
                 <router-link :to="{name: 'watch', params: {id: video.video.id}}" class="bg-gray shadow overflow-hidden sm:rounded-lg flex max-sm:flex-col">
-                  <div class="aspect-w-16 aspect-h-9 flex-shrink-0">
-                    <img class="object-cover w-80 h-48 max-md:w-56 max-md:h-32 rounded-2xl" :src="`http://localhost:8080/thumbnail/${video.video.id}`"
-
-                        alt="Miniature de la vidéo">
-                </div>
-                <div class="p-4 flex-grow flex flex-col justify-center">
-                    <h3 class="text-white text-xl font-bold mb-2">{{ video.video.title }}</h3>
-                    <div class="views-date flex gap-2">
-                        <p class="text-gray-500 text-sm">{{ video.video.views }} vues</p>
-                        <p class="text-gray-500 text-sm">• il y a {{ dateDiff[video.video.created_at] }}</p>
+                    <div class="aspect-w-16 aspect-h-9 flex-shrink-0">
+                        <img class="object-cover w-80 h-48 max-md:w-56 max-md:h-32 rounded-2xl" :src="`http://localhost:8080/thumbnail/${video.video.id}`" alt="Miniature de la vidéo">
                     </div>
-                    <div class="views-date flex gap-2 mt-3">
-                        <img class="object-cover rounded-full w-8 h-8"
-                            :src="publisherName[video.video.publisher_id]?.profile_photo" alt="Image de la chaine">
-                        <p class="text-gray-500 text-sm flex items-center">{{ publisherName[video.video.publisher_id]?.pseudo ??
-                            'Nom inconnu' }} chaine</p>
+                    <div class="p-4 flex-grow flex flex-col justify-center">
+                        <h3 class="text-white text-xl font-bold mb-2">{{ video.video.title }}</h3>
+                        <div class="views-date flex gap-2">
+                            <p class="text-gray-500 text-sm">{{ video.video.views }} vues</p>
+                            <p class="text-gray-500 text-sm">• il y a {{ dateDiff[video.video.created_at] }}</p>
+                        </div>
+                        <div class="views-date flex gap-2 mt-3">
+                            <img class="object-cover rounded-full w-8 h-8" :src="publisherName[video.video.publisher_id]?.profile_photo" alt="Image de la chaine">
+                            <p class="text-gray-500 text-sm flex items-center">{{ publisherName[video.video.publisher_id]?.pseudo ?? 'Nom inconnu' }} chaine</p>
+                        </div>
                     </div>
-
-                </div>
-
-
                 </router-link>
-                
-
             </div>
+        </div>
     </div>
-</div></template>
+</template>
