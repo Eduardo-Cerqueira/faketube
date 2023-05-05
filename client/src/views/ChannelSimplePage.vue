@@ -24,7 +24,7 @@
 </template>
 <script setup>
 import { useFetch } from '@vueuse/core'
-import { computed, onMounted, ref, reactive } from 'vue'
+import { computed, onMounted, ref, reactive, watch } from 'vue'
 // import SelectVideoChannel from "../components/chaine/SelectVideoChannel.vue";
 import SelectVideoChannelDynamic from '../components/chaine/SelectVideoChannelDynamic.vue'
 import SelectVideoChannelFetch from '../components/chaine/SelectVideoChannelFetch.vue'
@@ -44,4 +44,16 @@ onMounted(async () => {
   } = await useFetch(`http://localhost:8080/getVideoByPublisherId/${userId}`)
   userVideos.value = JSON.parse(videos.value).message
 })
+
+watch(
+      () => route.params.id,
+      async newId => {
+        const {
+        isFetching,
+        error,
+        data: videos
+        } = await useFetch(`http://localhost:8080/getVideoByPublisherId/${newId}`)
+        userVideos.value = JSON.parse(videos.value).message
+      }
+    )
 </script>
