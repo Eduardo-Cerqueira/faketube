@@ -1,21 +1,63 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import TestView from "@/views/TestView.vue";
+import PlayerPage from '../views/PlayerPage.vue'
+import SearchVideo from '@/views/SearchVideoView.vue'
+import LoginView from '@/views/LoginView.vue'
+import UploadView from '../views/UploadView.vue'
+import PlayerVideo from '../views/PlayerVideo.vue'
+import RegisterView from "@/views/RegisterView.vue";
+import UpdateProfilView from "@/views/UpdateProfilView.vue";
+import ChannelSimplePage from "@/views/ChannelSimplePage.vue"
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: TestView
-    }
-  ]
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: HomeView
+        },
+        {
+            path: '/watch?id=:id',
+            name: 'watch',
+            component: PlayerPage
+        },
+        {
+          path: '/searchVideo/:userResearch',
+          name: 'searchVideo',
+          component: SearchVideo
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: LoginView
+        },
+        {
+            path: '/upload',
+            name: 'Upload Video',
+            component: UploadView
+        },
+        {
+            path: '/video/:id',
+            name: 'Player',
+            component: PlayerVideo
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: RegisterView
+        },
+        {
+            path: '/update',
+            name: 'updateProfil',
+            component: UpdateProfilView
+        },
+        {
+          path: '/channel/:id',
+          name: 'channel',
+          component: ChannelSimplePage
+      },
+    ]
 })
 
 export default router
