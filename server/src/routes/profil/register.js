@@ -24,7 +24,7 @@ app.app.get("/register/:pseudo/:email/:password/:prefs", (req, res) => {
                     bcrypt.hash(password, salt, function (err, hash) {
                         db.db.query(
                             'INSERT INTO `users`(`pseudo`, `email`, `password`, `created_at`, `prefs`, `profile_photo`, `description`) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                            [pseudo, email, hash, new Date(), prefs, null, null],
+                            [pseudo, email, hash, new Date(), prefs, "https://w7.pngwing.com/pngs/419/473/png-transparent-computer-icons-user-profile-login-user-heroes-sphere-black-thumbnail.png", null],
 
                             function (err, results, fields) {
                                 console.log(err);
