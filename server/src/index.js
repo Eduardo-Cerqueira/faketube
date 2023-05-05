@@ -15,6 +15,7 @@ const updateEmail = require('./routes/profil/updateEmail')
 const getVideoChannel = require('./routes/chaine/getVideoChannel')
 const uploadRoute = require('./routes/chaine/uploadRoute')
 const videoRoute = require('./routes/chaine/videoRoute')
+const searchVideoAdvanced = require('./routes/recherche/advancedSearch')
 
 const PORT = process.env.PORT || 8080;
 app.app.listen(PORT, () => {

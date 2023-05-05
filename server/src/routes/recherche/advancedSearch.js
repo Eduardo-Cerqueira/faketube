@@ -4,10 +4,11 @@ const db = require('../../utils/database')
 
 var result;
 
-app.app.get("/getUserById/:filters", (req, res) => {
+app.app.get("/searchVideoAdvanced/:filters", (req, res) => {
     // req.params;
     // console.log(req.params)
     let filters = req.params.filters;
+    console.log("filters : ",filters);
     let sql = 'SELECT * FROM `videos` WHERE';
     let allFilters = filters.split('+');
     allFilters.forEach(filter => {
@@ -36,7 +37,6 @@ app.app.get("/getUserById/:filters", (req, res) => {
     
         function(err, results, fields) {
             console.log(results); // results contains rows returned by server
-    
             result = results
         }   
     );
