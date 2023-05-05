@@ -1,4 +1,3 @@
-
 <script setup>
 import { ref, onMounted, reactive } from 'vue'
 import logoURL from '../../assets/logo.png'
@@ -47,9 +46,9 @@ onMounted(async () => {
 
 <template>
   <aside :class="`${is_expanded ? 'is-expanded' : ''}`" class="bg-zinc-900 min-h-10 sticky top-0 transition-all duration-200 p-4 z">
-    <div class="logo mb-4">
+    <router-link :to="{name: 'home'}" class="logo mb-4">
       <img :src="logoURL" alt="" class="w-8">
-    </div>
+    </router-link>
 
     <div class="menu-toggle-wrap mb-4 flex justify-end relative transition-all duration-200">
       <button class="menu-toggle" @click="ToggleMenu">
@@ -59,7 +58,7 @@ onMounted(async () => {
 
     <div class="menu">
       <h3 class="text-lg font-medium mb-2 ml-5">Profil</h3>
-      <router-link :to="{name: 'login'}" class="button flex items-center mb-2" v-if="userId !== ''">
+      <router-link :to="{name: 'updateProfil'}" class="button flex items-center mb-2" v-if="userId !== ''">
         <img :src="connectedUser.profilePicture" alt="" class="w-10 aspect-square rounded-full mr-2" />
         <span class="text">{{ connectedUser.pseudo }}</span>
       </router-link>

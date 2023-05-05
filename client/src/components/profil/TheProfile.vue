@@ -12,7 +12,7 @@
             <button class="profile-logout-btn bg-red-600 mr-5 text-white rounded-md px-4 py-2 mt-4 transition-colors hover:bg-red-700" @click="logout">Déconnexion</button>
         </div>
 
-        <div class="flex flex-col w-full space-y-6">
+        <div class="flex flex-row w-full space-y-6">
             <div class="p-20">
                 <h2 class="text-3xl font-semibold mb-4">Informations de compte</h2>
                 <div class="grid grid-cols-2 gap-4">
@@ -26,8 +26,8 @@
                     <div class="flex flex-col">
                         <label for="description" class="text-lg font-semibold mb-2">Description :</label>
                         <div class="flex items-center">
-                            <p class="text-lg">{{ user.description }}</p>
-                            <button class="profile-edit-btn bg-transparent text-gray-500 hover:text-gray-800 transition-colors ml-2" @click="editDescription">Modifier</button>
+                            <p class="text-lg">{{ user.desc }}</p>
+                            <button class="profile-edit-btn bg-transparent text-gray-500 hover:text-gray-800 transition-colors ml-2" @click="editDesc">Modifier</button>
                         </div>
                     </div>
                     <div class="flex flex-col">
@@ -71,12 +71,13 @@ function isValidEmail(email) {
     return emailRegex.test(email)
 }
 
-const user = reactive({pseudo: "", email:""})
+const user = reactive({pseudo: "", email:"", desc:""})
 
 onMounted( async ()=>{
     const { isFetching, error, data:use } = await useFetch(`http://localhost:8080/getUserById/${localStorage.getItem("id")}`)
     user.pseudo = JSON.parse(use.value).message[0]["pseudo"]
     user.email = JSON.parse(use.value).message[0]["email"]
+    user.desc = JSON.parse(use.value).message[0]["description"]
     user.date = JSON.parse(use.value).message[0]["created_at"]
 })
 
@@ -96,8 +97,16 @@ async function editEmail() {
         newEmail = prompt('Nouvel email :')
     }
     if (newEmail !== null) {
-        const { isFetching, error, data:newPseudo } = await useFetch(`http://localhost:8080/updateEmail/${newEmail}/${localStorage.getItem("id")}`)
-        user.email = JSON.parse(newPseudo.value)["newEmail"]
+        const { isFetching, error, data:newmail } = await useFetch(`http://localhost:8080/updateEmail/${newEmail}/${localStorage.getItem("id")}`)
+        user.email = JSON.parse(newmail.value)["newEmail"]
+    }
+}
+
+async function editDesc() {
+    const newDesc = prompt('Nouveau desc:', user.desc)
+    if (newDesc !== null) {
+        const { isFetching, error, data:newdesc } = await useFetch(`http://localhost:8080/updateDesc/${newDesc}/${localStorage.getItem("id")}`)
+        user.desc = JSON.parse(newdesc.value)["newDesc"]
     }
 }
 
@@ -117,7 +126,6 @@ function logout() {
 </script>
 
 <style scoped>
-
 
 body {
     @apply flex justify-center items-center bg-[#1a1a1a] text-white text-base leading-normal m-0 p-0;

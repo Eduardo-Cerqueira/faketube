@@ -10,13 +10,13 @@
     </div>
     <!-- channel info text -->
     <div class="flex items-center flex-col text-center">
-      <h2>{{ videoChannelName }}</h2>
-      <h3>{{ SubscriberNumber }} abonnés</h3>
+      <h2>{{ user.pseudo }}</h2>
+      <h3>{{ user.subscriber_number }} abonnés</h3>
       <!-- description + buttons -->
       <div>
         <!-- ligne de la description avec son bouton de redirection -->
         <div class="flex">
-          <h3>{{ videoDescription }}</h3>
+          <h3>{{ user.description }}</h3>
           <router-link to="/description">></router-link>
         </div>
         <button class="text-center">S'abonner</button>
@@ -33,16 +33,20 @@
   </div>
 </template>
 
-<script setup()>
-//import SelectVideoChannel from './SelectVideoChannel.vue';
+<script setup>
 
-export default {
-  props: {
-    videoChannelName: { required: true, type: String },
-    VideoNumber: { required: true, type: String },
-    SubscriberNumber: { required: true, type: String },
-    videoDescription: { required: true, type: String }
-  }
-  //components: { SelectVideoChannel }
-}
+import {onMounted, reactive} from "vue";
+import {useFetch} from "@vueuse/core";
+const user = reactive({pseudo: "", subscriber_number: "", description: ""})
+onMounted(async () => {
+    const {
+        isFetching,
+        error,
+        data: use
+    } = await useFetch(`http://localhost:8080/getUserById/${localStorage.getItem("id")}`)
+    user.pseudo = JSON.parse(use.value).message[0]["pseudo"]
+    user.subscriber_number = JSON.parse(use.value).message[0]["subscriber_number"]
+    user.description = JSON.parse(use.value).message[0]["description"]
+})
+
 </script>

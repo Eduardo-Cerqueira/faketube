@@ -7,6 +7,7 @@ import UploadView from '../views/UploadView.vue'
 import PlayerVideo from '../views/PlayerVideo.vue'
 import RegisterView from "@/views/RegisterView.vue";
 import UpdateProfilView from "@/views/UpdateProfilView.vue";
+import ChannelSimplePage from "@/views/ChannelSimplePage.vue"
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,6 +52,11 @@ const router = createRouter({
             name: 'updateProfil',
             component: UpdateProfilView
         },
+        {
+          path: '/channel/:id',
+          name: 'channel',
+          component: ChannelSimplePage
+      },
     ]
 })
 
