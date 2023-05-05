@@ -31,42 +31,21 @@ const formattedVideoDate = computed(() => {
   }
 })
 </script>
-<!-- <template>
-    <div class="aspect-video text-white">
-        <img class="w-max aspect-video object-cover rounded-2xl" 
-        :src="video.miniature_path" 
-        :alt="video.title">
-        <div class="flex flex-row gap-4 mt-4">
-            <div class="publisheravatar bg-zinc-700 rounded-full aspect-square">
-            </div>
-            <div class="videoinfo flex flex-col">
-                <span class="font-bold text-10">{{ video.title }}</span>
-                <span class="text-zinc-500">{{ video.publisher_id }}</span>
-                <span class="text-zinc-500">{{ video.views }} views - {{ formattedVideoDate }} ago</span>
-            </div>
-        </div>
-    </div>
-</template> -->
 <template>
-  <div class="text-white max-h-25">
+  <div class="text-white max-h-25 w-full">
+    <router-link :to="{name: 'watch', params: {id: video.id}}">
     <img
-      class="w-1/6 aspect-video object-cover rounded-2xl"
+      class="w-full aspect-video object-cover rounded-2xl"
       :src="`http://localhost:8080/thumbnail/${video.id}`"
       :alt="video.title"
     />
-    <div class="w-1/6 flex flex-row gap-4 mt-2 shadow-sm bg-green-500">
+    <div class="1/4 gap-4 mt-2 shadow-sm ">
       <div></div>
       <div class="video__info flex flex-col">
-        <span class="font-bold text-10">{{ video.title }}</span>
-        <span class="text-zinc-500">{{ video.publisher_id }}</span>
-        <span class="text-zinc-500">{{ video.views }} views - {{ formattedVideoDate }} ago</span>
+        <span class="font-bold text-10 mt-2">{{ video.title }}</span>
+        <span class="text-zinc-500 text-xs">{{ video.views }} views - {{ formattedVideoDate }} ago</span>
       </div>
     </div>
+  </router-link>
   </div>
 </template>
-<style scoped>
-.publisher__avatar {
-  width: 50px;
-  height: 50px;
-}
-</style>
