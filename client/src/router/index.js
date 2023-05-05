@@ -23,9 +23,9 @@ const router = createRouter({
             component: PlayerPage
         },
         {
-            path: '/searchVideo',
-            name: 'searchVideo',
-            component: SearchVideo
+          path: '/searchVideo/:userResearch',
+          name: 'searchVideo',
+          component: SearchVideo
         },
         {
             path: '/login',
