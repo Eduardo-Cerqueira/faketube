@@ -35,18 +35,39 @@
 
 <script setup>
 
-import {onMounted, reactive} from "vue";
+import {onMounted, reactive, watch} from "vue";
 import {useFetch} from "@vueuse/core";
+import {useRoute} from 'vue-router';
+
+const route = useRoute()
+
 const user = reactive({pseudo: "", subscriber_number: "", description: ""})
 onMounted(async () => {
+    const channelId = route.params.id 
     const {
         isFetching,
         error,
         data: use
-    } = await useFetch(`http://localhost:8080/getUserById/${localStorage.getItem("id")}`)
+    } = await useFetch(`http://localhost:8080/getUserById/${channelId}`)
+
     user.pseudo = JSON.parse(use.value).message[0]["pseudo"]
     user.subscriber_number = JSON.parse(use.value).message[0]["subscriber_number"]
     user.description = JSON.parse(use.value).message[0]["description"]
 })
+
+watch(
+      () => route.params.id,
+      async newId => {
+    const {
+        isFetching,
+        error,
+        data: use
+    } = await useFetch(`http://localhost:8080/getUserById/${newId}`)
+
+    user.pseudo = JSON.parse(use.value).message[0]["pseudo"]
+    user.subscriber_number = JSON.parse(use.value).message[0]["subscriber_number"]
+    user.description = JSON.parse(use.value).message[0]["description"]
+      }
+    )
 
 </script>
